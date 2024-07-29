@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  {% load static %}
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+
+
+  <title>Attendace</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    *:not(i) {
+      font-family: "Poppins", sans-serif;
+    }
+
+    header {
+      width: 100%;
+      background-color: #FFFFFF;
+      padding: 3rem 5rem;
+      position: fixed;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 170px;
+      background-color: rgba(204, 247, 219, 0.886);
+      font-size: 18px;
+    }
+
+    table {
+      background-color: white;
+      border-collapse: collapse;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(244, 229, 229, 0.15);
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: medium;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f3f3f3;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn1 {
+      background: #4caf50;
+      color: #ebecef;
+      border-radius: 10px;
+      height: 40px;
+      width: 160px;
+      font-size: medium;
+      border: none;
+      margin: 20px;
+    }
+
+    .btn1:hover {
+      background-color: #ebf1f5;
+      color: #4caf50;
+      transform: scale(1);
+    }
+
+    .button-wrapper {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    /* Responsive Styles */
+    @media only screen and (max-width: 768px) {
+      header {
+        padding: 2rem;
+      }
+
+      body {
+        margin-top: 150px;
+      }
+
+      .btn1 {
+        width: 140px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      header {
+        padding: 1rem;
+      }
+
+      body {
+        margin-top: 130px;
+      }
+
+      .btn1 {
+        width: 120px;
+        font-size: small;
+      }
+    }
+  </style>
+
+  <header>
+    <nav>
+      <img style="margin:auto;" src="static/Images/logo.png" href="#home" id="logo" height="60px"></img>
+    </nav>
+  </header>
+
+</head>
+
+
+<body>
+  <div>
+    <h2 style="color:#006600">EVENT ID: {{ event.e_id }}</h2><br>
+    <h2 style="color:#006600">EVENT  NAME: {{ event.event_name }}</h2><br>
+    <form method="post" action="{% url 'attendance' e_id %}">
+      {% csrf_token %}
+      <table class="content-table table-hover">
+        <thead>
+          <tr>
+            <th>user</th>
+            <th>email</th>
+            <th>is_present</th>
+            <th>Attendance Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for attendance in attendee %}
+          {% if attendance.is_present %}
+          <tr style="background-color:#6fad95;">
+            {% else %}
+          <tr style="background-color:#FFF4BD;">
+            {% endif %}
+            <td>{{attendance.user}}</td>
+            <td>{{attendance.email}}</td>
+            <td>
+              {% if attendance.is_present %}
+              Present
+              {% else %}
+              Absent
+              {% endif %}
+            </td>
+            <td>
+              <label class="switch">
+                <input type="checkbox" name="toggle" value="{{ attendance.id }}" {% if attendance.is_present %}checked{% endif %}>
+                <span class="slider round"></span>
+              </label>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="button">
+        <div class="button-wrapper">
+          <button class="btn1" type="button" onclick="redirectToAdmin()"> Back to Admin</button>
+          <script>
+            function redirectToAdmin() {
+              window.location.href = '/admin/home/event/';
+            }
+          </script>
+          <button class="btn1" type="submit" name="Mark Manually">SUBMIT</button>
+          <button class="btn1" type="button" id="exportBtn">Export as PDF</button>
+        </div>
+      </div>
+
+      <script>
+        document.getElementById('exportBtn').addEventListener('click', function() {
+          const element = document.querySelector('.content-table');
+          const h2Elements = document.querySelectorAll('h2'); // Select all h2 elements
+
+          // Extract event ID and event name from h2 elements
+          const eventId = h2Elements[0].textContent.trim().replace('EVENT ID: ', '');
+          const eventName = h2Elements[1].textContent.trim().replace('EVENT  NAME: ', '');
+
+          // Create a temporary div element to hold the h2 elements and table
+          const tempDiv = document.createElement('div');
+
+          // Clone and append each h2 element to the temporary div
+          h2Elements.forEach(function(h2) {
+            tempDiv.appendChild(h2.cloneNode(true));
+          });
+
+          tempDiv.appendChild(element.cloneNode(true)); // Clone the table element
+
+          html2pdf()
+            .set({
+              filename: eventId + '-' + eventName + '.pdf',
+              margin: [10, 10, 10, 10]
+            })
+            .from(tempDiv)
+            .save();
+        });
+      </script>
+    </form>
+  </div>
+
+  <app-root></app-root>
+</body>
+
+</html>

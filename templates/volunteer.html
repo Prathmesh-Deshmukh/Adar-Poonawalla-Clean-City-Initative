@@ -1,0 +1,495 @@
+{% extends 'base.html' %}
+{%block title%}Volunteer Page{%endblock title%}
+{% load static%}
+
+
+{% block start %}
+
+<style>
+
+
+
+/* Landing Image */
+
+.main-image {
+	position: relative;
+	background-image: url("/static/Images/volunteer.jpg");
+	height: 620px;
+	background-size: cover;
+	background-position: center;
+    color: #fff;
+	text-align: center;
+	padding-top: 150px;
+    margin-top: 150px;
+    z-index: 1;
+}
+
+/* Style the text on top of the main image */
+.main-image .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	padding: 50px;
+	box-sizing: border-box;
+    z-index: 2;
+}
+
+.main-image h1.heading {
+	font-size: 48px;
+	margin-bottom: 20px;
+}
+
+.main-image p.body {
+	font-size: 24px;
+	margin-bottom: 0;
+}
+
+
+
+
+/* register as volunteer part */
+@media (max-width: 768px) {
+	.img2 {
+	height: auto;
+	}
+	
+	.img2 h3, .img2 h4 {
+	margin: 10px 0;
+	}
+	
+	.img2 button {
+	position: static;
+	margin-top: 20px;
+	}
+	}
+	
+	.img2 {
+	background-image: url("/static/Images/footer_bg1.jpg");
+	height: 260px;
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+	text-align: center;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	text-align: center;
+	display: flex;
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+	flex-direction: column; /* Stack the text vertically */
+	position: relative; /* Enable positioning of button */
+	}
+	
+	.img2 h3 {
+	font-size: 32px;
+	margin-bottom: 10px;
+	}
+	
+	.img2 h4 {
+	font-size: 28px;
+	margin-bottom: 5px;
+	}
+	
+	.img2 button {
+	height : 60px;
+	width: 190px;
+	border-radius: 15px; /* Make corners rounded */
+	font-size: 30px;
+	background-color: #fff;
+	color: #000;
+	align-item: center;
+	}
+	
+	.img2 button:hover {
+	background-color:#006600;/*#58C104;*/
+	color: #fff;
+	}
+
+
+/* persons details part */
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	/margin: 0 auto; / added margin property */
+	margin-bottom: 50px;
+	
+  }
+  
+  .image {
+	flex: 1 1 400px;
+	margin-right: 50px;
+	/* border: 1px solid black;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .image img {
+	max-width: 65%;
+	max-height: 60%;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }
+
+  .container .image img {
+	border: 5px solid #006600;
+  }
+  
+  .details {
+	flex: 1 1 50%;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+  }
+  
+  h2 {
+	font-size: 32px;
+	line-height: 1.2;
+	margin-bottom: 10px;
+	color: #006600;;
+  }
+  
+  h3 {
+	font-size: 24px;
+	line-height: 1.2;
+	margin-bottom: 20px;
+  }
+  
+  p {
+	font-size: 18px;
+	line-height: 1.5;
+  }
+  
+  @media only screen and (max-width: 768px) {
+	.container {
+	  flex-direction: column;
+	}
+	
+	.image {
+	  margin-right: 0;
+	  margin-bottom: 30px;
+	  width: 350px;
+	}
+	
+	.details {
+	  margin-top: 0;
+	}
+	
+	h2 {
+	  font-size: 28px;
+	}
+	
+	h3 {
+	  font-size: 20px;
+	}
+  }
+
+
+
+  /* horizontal line */
+  hr {
+	border: none;
+	margin: 30px 0px;
+	border-top: 5px solid #58C104;
+	margin-left: 6%;
+	margin-right: 6%;
+
+	background: linear-gradient(to right, #e3dcdc, #5b5b5b, #e3dcdc);
+	box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+/* leaderborad part */
+.box {
+	width: 1300px;
+	margin: auto;
+	}
+	
+	.table {
+	display: table;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0px 10px;
+	}
+
+
+	.row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-radius: 20px;
+		padding: 10px;
+		margin-bottom: 10px;
+		margin: 0px;
+		background-color: #baeaab;
+		width: 1292px;
+		justify-content: center; /* Center horizontally */		
+	  }
+
+	
+	.header {
+	font-weight: bold;
+	background-color: #e0dede;
+	}
+
+  
+	.cell {
+		flex-basis: 0;
+		flex-grow: 1;
+		padding: 10px;
+		text-align: center;		
+		font-size:large;
+	  }
+	
+
+	  .bold-text {
+		font-weight: bolder;
+		font-size: x-large;
+	  }
+
+	
+	.card {
+	perspective: 1000px;
+	width: 70px;
+	height: 70px;
+	margin: auto;
+	}
+	
+	.card-front,
+	.card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.5s;
+	}
+	
+	.card-front {
+	background-color: #888;
+	transform: rotateY(0deg);
+	backface-visibility: hidden;
+	}
+	
+	.card-back {
+	background-color: darkgreen;
+	color: white;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+	}
+	
+	.card:hover .card-front {
+	transform: rotateY(180deg);
+	}
+	
+	.card:hover .card-back {
+	transform: rotateY(0deg);
+	}
+
+
+	.table-container {
+  	width: 1300px;
+	border: 4px solid #58C104;
+ 	margin: 0 auto;
+  	margin-bottom: 3%;
+	background-color: #e0dede;
+	border-radius: 10px;
+	}
+
+
+	
+   .card1-title{
+		font-size: 32px;
+		  font-weight: bold;
+	  }
+
+
+	  .login_btn{
+        width: 80px;  
+        height: 30px; 
+        background-color :#58C104 ;
+        border-radius:15px;
+       }
+      
+       .login_btn:hover{
+        color:white;
+       }
+
+	
+	  
+</style>
+
+
+
+
+
+
+<body>
+	<div class="main-image">
+		<div class="overlay">
+			<h1 class="heading">Let's Change the World Together</h1>
+			<p class="body">Become Volunteer to help for the cause of Clean City Initiative.</p>
+		</div>
+	</div>
+     
+	<div class="img2 ">
+   <div class="block1 " style="
+   align-items: center;">
+		<h3 >Become a Volunteer</h3>
+	
+		<h4>Join Hands to make clean and green city</h4>
+	     
+		<div class="cell"><a class="enroll-button" href="/register_1"><button>Register</button></a></div>
+   </div>
+	</div>
+
+	
+	
+	  <div class="container">
+		<div class="image">
+		  <img src="/static/Images/volenteer_img_1.png" alt="Mangesh Kshirsagar">
+		</div>
+		<div class="details">
+		  <h2 class="card1-title">Mangesh Kshirsagar</h2>
+		  <h3>Young partner wanting a bigger change</h3>
+		  <br>
+		  <p>A young partner wanting a bigger change, Mangesh Kshirsagar chose his career in the development sector which enabled him to get associated with like minded organizations. He got associated with APCCI in 2017. Those were the early days of this initiative and Mangesh got engaged in many initiatives including spreading awareness in schools, colleges and common citizens</p>
+		  <p>According to Mangesh "There are many people in society who are doing wonderful work on waste management and environment and they are looking for platforms to create a larger impact. APCCI is giving them that platform. It requires empathy, compassion and passion to be a good volunteer. I feel Pune is lucky to have APCCI which not only helping city to keep clean but also brings all people together for a good cause. Having rolled out the initiatives successfully, what is important now is to focus on creating awareness amongst younger generation first so that the they can be responsible future citizens and will maintain cleanliness and environment."</p>
+		</div>
+	  </div>
+	  <br>
+	  <br>
+	
+	  <hr>
+	
+	
+	  <div class="container">
+		<div class="image">
+		  <img src="/static/Images/volenteer_img_2.png" alt="Sathya Natarajan">
+		</div>
+		<div class="details">
+		  <h2  class="card1-title">Sathya Natarajan</h2>
+		  <h3>Young IT professional and a green change enabler</h3>
+		  <br>
+		  <p>A change maker right from young age, IT professional Sathya Natarajan is leading the way volunteers get engaged with green movements. It was in 2014 that Satya Natarajan started volunteering at a smaller scale which involved painting walls on the streets of Hadapsar & conducting clean-up drives in various areas. These clean-up drives gave him a sense of content and satisfaction every time he looked at clean surroundings. While working for a multinational company as an onsite director, he volunteered with various NGOs for multiple initiatives. Although different NGOs had different objectives and working methods, he had his path of learning and understood that the larger objective is welfare of the people. The volunteering efforts opened up his mind for new visions. This led him to be associated with APCCI which has the vision of bringing about change and at a larger scale.</p>
+		  <p>According to Sathya Natarajan "A volunteer is someone who imbibes qualities like empathy, curiosity, learning & a vision to bring about change. I like to be associated with APCCI because here is a team which works on a larger scale to bring about a change, to work for the welfare of the people with no expectations at all. The relentless efforts in this direction gives me immense satisfaction and inspires me to do more."</p>
+		</div>
+	</div>
+	
+	
+	
+	<div class="container">
+		<h2 style="font-size: 48px; margin: 2%">Drives</h2>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+			<li data-target="#myCarousel" data-slide-to="4"></li>
+			<li data-target="#myCarousel" data-slide-to="5"></li>
+			<li data-target="#myCarousel" data-slide-to="6"></li>
+			<li data-target="#myCarousel" data-slide-to="7"></li>
+			<li data-target="#myCarousel" data-slide-to="8"></li>
+		  </ol>
+	  
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner">
+	  
+			<div class="item active">
+			  <img src="/static/Images/volunteer_drive_2.jpg" alt="Los Angeles" style="width:150%;" style="width: 1700px; height: 650px;">
+			  <div class="carousel-caption">
+				<h3>Volunteer Drives</h3>
+			  </div>
+			</div>
+	
+			<div class="item">
+				<img src="/static/Images/volunteer_drive_8.jpg" alt="Chicago" style="width:150%;" style="width: 1700px; height: 650px;">
+				<div class="carousel-caption">
+				  <h3>Bhide Pool Cleanliness Drive - 12 Feb 2023</h3>
+				  <p>No. Of Volunteers participated - 104</p>
+				</div>
+			  </div>
+	  
+			<div class="item">
+			  <img src="/static/Images/volunteer_drive_5.jpg" alt="Chicago" style="width:150%;" style="width: 1700px; height: 650px;">
+			  <div class="carousel-caption">
+				<h3>Khaki Cleanup Drive - 11 Feb 2023</h3>
+				<p>No. Of Volunteers participated - 250</p>
+			  </div>
+			</div>
+		  
+			<div class="item">
+			  <img src="/static/Images/volunteer_drive_6.jpg" alt="New York" style="width:150%;" style="width: 1700px; height: 650px;">
+			  <div class="carousel-caption">
+				<h3>Parvati Cleanup Drive - 26 Feb 2023</h3>
+				<p>No. Of Volunteers participated - 48</p>
+			  </div>
+			</div>
+	
+		  <div class="item">
+			<img src="/static/Images/volunteer_drive_3.jpg" alt="New York" style="width:200%;" style="width: 2000px; height: 650px;">
+			<div class="carousel-caption">
+			  <h3>Wagholi Cleanup Drive - 25 March 2023</h3>
+			  <p>No. Of Volunteers participated - 65</p>
+			</div>
+		  </div>
+	
+		  <div class="item">
+			<img src="/static/Images/volunteer_drive_11.jpg" alt="New York" style="width:100%;" style="width: 1700px; height: 650px;">
+			<div class="carousel-caption">
+			  <h3>Sinhagad Fort Cleanup Drive - 11 March 2023</h3>
+			  <p>No. Of Volunteers participated - 187</p>
+			</div>
+		  </div>
+	
+		  <div class="item">
+			<img src="/static/Images/volunteer_drive_7.jpg" alt="New York" style="width:100%;" style="width: 1700px; height: 650px;">
+			<div class="carousel-caption">
+			  <h3>Corianthons Club Road Cleanup Drive - 25 Feb 2023</h3>
+			  <p>No. Of Volunteers participated - 22</p>
+			</div>
+		  </div>
+	
+	
+	  
+	  
+		</div>
+	  
+		  <!-- Left and right controls -->
+		  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+		</div>
+	  </div>
+
+	  <br>		  
+	  <br>		  
+	  <br>
+	
+	  
+	
+	
+	
+	</body>
+
+	{% endblock %}

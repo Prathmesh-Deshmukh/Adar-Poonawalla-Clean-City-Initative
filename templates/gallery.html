@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{%block title%}Gallery Page{%endblock title%}
+{% load static%}
+
+
+{% block start %}
+<head>
+ 
+<style>
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 250px;
+  grid-gap: 20px;
+  margin-bottom:3%;
+  
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+    
+  .img2{
+    margin-top:4%;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 300px;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  height: 100%;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.overlay p{
+  text-align:center;
+}
+
+.overlay {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+ /* green box */
+@media (max-width: 768px) {
+  .img2 {
+   height: auto;
+   } 
+   
+   .img2 h3, .img2 h4 {
+   margin: 10px 0;
+   }}
+ 
+   .img2 {
+       background-image: url("/static/Images/footer_bg1.jpg");
+       height: 150px;
+       background-size: cover;
+       background-position: center;
+       color: #fff;
+       text-align: center;
+       font-size: 250%;
+       margin-bottom: 3%;
+       text-align: center;
+       display: flex;
+       justify-content: center; /* Center horizontally */
+       align-items: center; /* Center vertically */
+       flex-direction: column; /* Stack the text vertically */
+       position: relative; /* Enable positioning of button */
+       }
+
+
+
+       .login_btn{
+        width: 80px;  
+        height: 30px; 
+        background-color :#58C104 ;
+        border-radius:15px;
+       }
+      
+       .login_btn:hover{
+        color:white;
+       }
+
+
+
+
+</style>
+
+</head>
+
+
+<body>
+<br>
+<br>
+<br>
+
+  <div class="img2">
+    <h3>Gallery Page</h3>
+  </div>
+
+    <section class="gallery">
+      <div class="gallery-item">
+        <img src="/static/Images/adar_poonawalla_pp_2.jpg" alt="Image 1">
+        <div class="overlay">
+          
+          <p>CEO - Serum Institute of India Pvt. Ltd.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/static/Images/volunteer_drive_1.jpeg" alt="Image 2">
+        <div class="overlay">
+       
+          <p>Proactive volunteers and team APCCI always try to be responsible citizens of Pune.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/static/Images/volunteer_drive_10.jpg" alt="Image 3">
+        <div class="overlay">
+          
+          <p>With the support of volunteers, Team APPCI was able to rid CCD Square of garbage and create a cleaner Pune.
+          </p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/static/Images/volunteer_drive_9.jpg" alt="Image 4">
+        <div class="overlay">
+        
+          <p>Thrilled to have had diligent volunteers help Team APCCI clean Sinhagad Fort and preserve our heritage and rich history.
+          </p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/static/Images/img10.jpg" alt="Image 5">
+        <div class="overlay">
+          
+          <p>APCCI has introduced a doorstep collection for E-waste across Pune City. </p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/static/Images/img11.jpg" alt="Image 6">
+        <div class="overlay">
+        
+          <p>Team APCCI and volunteers collected 880 kg of waste.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/static/Images/portf_4.jpg" alt="Image 7">
+        <div class="overlay">
+        
+          <p>We can strive to transform our habits and be the change we wish to see in Pune.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/static/Images/volunteer_drive_12.jpg" alt="Image 8">
+        <div class="overlay">
+          
+          <p>Team APCCI was happy to collaborate with dedicated volunteers to clean Parvati Hill ensuring पुणे remains clean and green.</p>
+        </div>
+      </div>
+    
+      <div class="gallery-item">
+        <img src="/static/Images/img7.jpg" alt="Image 9">
+        <div class="overlay">
+        
+          <p>We can strive to transform our habits and be the change we wish to see in Pune.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/static/Images/img8.jpg" alt="Image 10">
+        <div class="overlay">
+          
+          <p>Eager volunteers helped team APCCI cleaned up 570kgs pf garbage making पुणे cleaner by the day.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/static/Images/img9.jpg" alt="Image 11">
+        <div class="overlay">
+        
+          <p> Cleanliness drive at Chatushrunghi Temple and hills.</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/static/Images/img13.jpg" alt="Image 12">
+        <div class="overlay">
+        
+          <p>Team APCCI is thrilled to have partnered with enthusiastic volunteers for a cleanliness drive.          </p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/static/Images/img14.jpg" alt="Image 13">
+        <div class="overlay">
+        
+          <p>Your words of appreciation let us know we are truly making a difference!  </p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/static/Images/img15.jpg" alt="Image 14">
+        <div class="overlay">
+          
+          <p>Spreading the message of a green and clean environment at the Mahatma Phule Sanskruti Bhavan a was a delight.
+          </p>
+        </div>
+      </div>
+    
+      <div class="gallery-item">
+        <img src="/static/Images/img16.jpg" alt="Image 15">
+        <div class="overlay">
+        
+          <p>एकत्र येऊया...बदल घडवूया...!</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/static/Images/img17.jpg" alt="Image 16">
+        <div class="overlay">
+          
+          <p>Such drives are a great opportunity for the collective contribution of volunteers and team APCCI.</p>
+        </div>
+      </div>
+
+      
+      <div class="gallery-item">
+        <img src="/static/Images/img19.jpg" alt="Image 17">
+        <div class="overlay">
+          
+          <p>Team APCCI and many motivated and energetic volunteers  </p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/static/Images/img20.jpg" alt="Image 18">
+        <div class="overlay">
+        
+          <p>Capturing candid moments of the cleanup drive at Jambhulwadi Lake.</p>
+        </div>
+      </div>
+      
+    </section>
+    
+    </body>
+
+    
+
+    {% endblock %}
+
+    

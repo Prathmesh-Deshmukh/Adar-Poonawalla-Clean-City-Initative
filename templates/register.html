@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+</head>
+    {% block body %}
+
+	<body>
+
+	<style>
+	
+		form {
+			margin: 0 auto;
+			background-color: #C5C5C5;
+			padding: 40px;
+			max-width: 1400px;
+			width: 90%;
+		  }
+		  
+		  label {
+			display: inline-block;
+			width: 40%;
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		  }
+		  
+		  input[type="checkbox"], input[type="radio"] {
+			transform: scale(1.5);
+			margin-right: 10px;     
+			font-size: 14px;
+		  }
+		  
+		  textarea {
+			width: 60%;
+			height: 150px;
+			font-size: 24px;
+			font-weight: bold;
+			padding: 10px;
+			border-radius: 10px;
+			border: none;
+			margin-bottom: 20px;
+		  }
+		  
+		  input[type="text"], select {
+			width: 60%;
+			font-size: 24px;
+			font-weight: bold;
+			padding: 10px;
+			border-radius: 10px;
+			border: none;
+			margin-bottom: 20px;
+		  }
+		  
+		  button[type="submit"] {
+			font-size: 24px;
+			font-weight: bold;
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			justify-content: center;
+		  }
+		  
+		  button[type="submit"]:hover {
+			background-color: #3e8e41;
+		  }
+		  
+		  h1 {
+			font-size: 48px;
+			font-weight: bold;
+			text-align: center;
+		  }
+		
+		  input[type="date"] {
+			width: 300px;
+			font-size: 24px;
+		  }
+		
+		   input, optgroup, select, textarea {
+			font-family: inherit;
+			font-size: 100%;
+			font-weight: inherit;
+			line-height: inherit;
+			color: inherit;
+			margin: 0;
+			padding: 0;
+			font-size: 24px;
+			border: none;
+			border-radius: 5px;
+		}
+
+	</style>
+
+	<h1>Volunteer Registration Form</h1>
+    <form id="form2" class="center" action="/register" method="POST">
+
+		{% csrf_token %}
+		{% include "alert.html" %}
+
+		
+		<label for="first_name">First Name:</label>
+		<input type="text" id="first_name1" name="first_name" required ><br><br>
+
+		<label for="last_name">Last Name:</label>
+		<input type="text" id="last_name1" name="last_name" required ><br><br>
+
+		<label for="username">Username:</label>
+        <input type="text" id="username1" name="username" placeholder="Enter your username" >
+
+		<label for="dob">Date of Birth:</label>
+		<input type="date" id="dob" name="dob"  required><br><br>
+
+		<label for="gender">Gender:</label>
+		<input type="radio" id="male" name="gender" value="male" required>
+		<label for="male">Male</label>
+		<input type="radio" id="female" name="gender" value="female">
+		<label for="female">Female</label>
+		<input type="radio" id="other" name="gender" value="other">
+		<label for="other">Other</label><br><br> 
+
+		<label for="phone">Phone Number:</label>
+		<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br><br>
+
+		<label for="emergency_phone">Emergency Phone Number:</label>
+		<input type="tel" id="emergency_phone" name="emergency_phone" pattern="[0-9]{10}" required><br><br>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email1" name="email" required ><br><br>
+
+		<label for="address">Address:</label>
+		<textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+
+		<label for="blood_group">Blood Group:</label>
+		<select id="blood_group" name="blood_group" required>
+			<option value="">--Select--</option>
+			<option value="A+">A+</option>
+			<option value="A-">A-</option>
+			<option value="B+">B+</option>
+			<option value="B-">B-</option>
+			<option value="AB+">AB+</option>
+			<option value="AB-">AB-</option>
+			<option value="O+">O+</option>
+			<option value="O-">O-</option>
+		</select><br><br>
+
+		<input type="checkbox" id="cleanup-drive" name="area_of_interest" value="cleanup-drive">
+		<label for="cleanup-drive">Participate in Cleanup Drive</label><br>
+		<input type="checkbox" id="awareness-events" name="area_of_interest" value="awareness-events">
+		<label for="awareness-events">Awareness Events</label><br>
+		<input type="checkbox" id="garbage-monitoring" name="area_of_interest" value="garbage-monitoring">
+		<label for="garbage-monitoring">Monitoring at Garbage Vulnerable Spots</label><br><br>
+
+        <label for="time_volunteering">How much time would you like to spend for volunteering?</label>
+        <select id="time_volunteering" name="time_volunteering">
+          <option value="1-2 hours per week">1-2 hours per week</option>
+          <option value="3-5 hours per week">3-5 hours per week</option>
+          <option value="6-10 hours per week">6-10 hours per week</option>
+          <option value="more than 10 hours per week">more than 10 hours per week</option>
+        </select>
+        
+        <label for="locations_volunteering">Interest in locations to volunteer:</label>
+        <input type="text" id="locations_volunteering" name="locations_volunteering">
+        
+        <label>Preferred modes to receive locations:</label>
+        <input type="radio" id="whatsapp" name="notification_mode" value="whatsapp">
+        <label for="whatsapp">Whatsapp</label>
+        <br>
+        <input type="radio" id="email" name="notification_mode" value="email">
+        <label for="email">Email</label>
+        <br>
+        <input type="radio" id="both" name="notification_mode" value="both">
+        <label for="both">Both</label>
+        <br>
+        <input type="radio" id="none" name="notification_mode" value="none">
+        <label for="none">Don't need notifications</label>
+        <br>
+        
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments"></textarea>
+
+		{% comment %} <label for="password">New Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your new password"><br> {% endcomment %}
+
+        {% comment %} <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"><br> {% endcomment %}
+        
+		<button class="btn-btn-primary" type="submit">Submit</button>
+
+        </form>
+
+
+
+		{% comment %} <div class="container">
+			<div class="row justify-content-center">
+			  <div class="col-lg-6">
+				<h2>Registration Form</h2>
+				<form method="POST">
+				  {% csrf_token %}
+				  <div class="form-group row">
+					<label for="username" class="col-lg-5 col-form-label">Username:</label>
+					<div class="col-lg-7">
+					  <input type="text" class="form-control" id="username" name="username" required>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="email" class="col-lg-5 col-form-label">Email:</label>
+					<div class="col-lg-7">
+					  <input type="email" class="form-control" id="email" name="email" required>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="password" class="col-lg-5 col-form-label">Password:</label>
+					<div class="col-lg-7">
+					  <input type="password" class="form-control" id="password" name="password" required>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="confirm_password" class="col-lg-5 col-form-label">Confirm Password:</label>
+					<div class="col-lg-7">
+					  <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+					  <span id='password_match'></span>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="first_name" class="col-lg-5 col-form-label">First Name:</label>
+					<div class="col-lg-7">
+					  <input type="text" class="form-control" id="first_name" name="first_name" required>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="last_name" class="col-lg-5 col-form-label">Last Name:</label>
+					<div class="col-lg-7">
+					  <input type="text" class="form-control" id="last_name" name="last_name" required>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<div class="col-lg-12 text-center">
+					  <button type="submit" class="btn btn-primary">Register</button>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			</div> 
+		  </div>{% endcomment %}
+
+
+
+{% comment %} <script>
+
+		window.addEventListener('DOMContentLoaded', (event) => {
+			// Get the data from the previous form submission
+			const formData = JSON.parse(localStorage.getItem('formData'));
+			
+			// Populate the form fields with the data
+			document.getElementById('username').value = formData.username;
+			document.getElementById('email').value = formData.email;
+			document.getElementById('first_name').value = formData.first_name;
+			document.getElementById('last_name').value = formData.last_name;
+
+
+			
+			// Disable the form fields so they can't be changed
+			document.getElementById('username').disabled = true;
+			document.getElementById('email').disabled = true;
+			document.getElementById('first_name').disabled = true;
+			document.getElementById('last_name').disabled = true;
+
+		});
+		
+</script> {% endcomment %}
+
+
+
+
+
+
+
+
+
+{% comment %} <script>
+	const form1 = document.getElementById("form1");
+	const form2 = document.getElementById("form2");
+	const username = document.getElementById("username");
+	const username1 = document.getElementById("username1");
+  
+	form1.addEventListener("submit", function(e) {
+	  e.preventDefault();
+	  username2.value = username1.value;
+	  alert("Username copied successfully.");
+	  form2.submit();
+    });
+  </script> {% endcomment %}
+
+
+
+
+        {% endblock body%} 
+
+
+
+
+		{% comment %} {% load static %}
+		<script src="{% static 'JavaScript/form.js' %}"></script> {% endcomment %}
+
+
+    </body>
+
+
+    
+
+    <br>
+    <br>
+    <br>
+    <br>

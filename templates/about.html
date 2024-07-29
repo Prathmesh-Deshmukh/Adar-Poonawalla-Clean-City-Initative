@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{%block title%}About Page{%endblock title%}
+{% load static%}
+
+
+{% block start %}
+
+<style>
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-side {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #006600;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.right-side {
+  width: 100%;
+}
+
+.img-fluid1 {
+  margin: 30px 0;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+.img-fluid2 {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+.heading {
+  font-size: 48px;
+  margin: 3%;
+  text-align: center;
+}
+
+.subheading {
+  font-size: 18px;
+  margin: 2% 6%;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #006600;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.card {
+  margin: 0 30px;
+}
+
+.img-fluid {
+  margin: 30px 0;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+@media (min-width: 576px) {
+  /* Small devices (landscape phones, 576px and up) */
+  .left-side {
+    width: 40%;
+    text-align: left;
+  }
+
+  .right-side {
+    width: 55%;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Medium devices (tablets, 768px and up) */
+  .container {
+    flex-wrap: nowrap;
+  }
+
+  .left-side {
+    width: 45%;
+  }
+
+  .right-side {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Large devices (desktops, 992px and up) */
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .left-side {
+    width: 40%;
+  }
+
+  .right-side {
+    width: 55%;
+  }
+}
+
+.card-title{
+  font-size: 32px;
+    font-weight: bold;
+}
+
+
+.login_btn{
+  width: 80px;  
+  height: 30px; 
+  background-color :#58C104 ;
+  border-radius:15px;
+ }
+
+ .login_btn:hover{
+  color:white;
+ }
+
+
+
+</style>
+
+
+<body>
+<div class="container" style="margin-top: 160px; margin-bottom: 3%;">
+  <div class="left-side">
+    <h2 class="slogan">Join us in making a difference</h2>
+    <p class="description">While this is a first step towards achieving the vision of making cities livable,the initiatives long term goal is to ensure that more & more cities adopt it to make Urban India cleaner, greener & healthier..</p>
+  </div>
+  <div class="right-side">
+    <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+    
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="/static/Images/inauguration_1.jpg" style="height:350px; width:700px" alt="Los Angeles" class="carousel_image">
+            <div class="carousel-caption">
+              <h3>Volunteer Drives</h3>
+            </div>
+          </div>
+          <div class="item">
+            <img src="/static/Images/inauguration_2.jpg" style="height:350px; width:700px" alt="Chicago" class="carousel_image">
+            <div class="carousel-caption">
+              <h3>Bhide Pool Cleanliness Drive - 12 Feb 2023</h3>
+              <p>No. Of Volunteers participated - 104</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="/static/Images/adar_poonawalla_pp_2.jpg" style="height:350px; width:700px" alt="Chicago" class="carousel_image">
+            <div class="carousel-caption">
+              <h3>Khaki Cleanup Drive - 11 Feb 2023</h3>
+              <p>No. Of Volunteers participated - 250</p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" style="visibility: hidden;"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" style="visibility: hidden;"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1 class="heading">Information About Clean City Initiative and Volunteer Drives</h1>
+
+<h2 class="subheading">Pune is the first city to adopt this Initiative. Today we have over 250 state-of-the-art equipment’s including Electric Vacuum Street Litter Picker, Electric Auto Tipper, Vacuum Litter Picker Mounted on Vehicles, Vacuum Assisted Truck Mounted Road Sweeper, Auto Tippers, Water Tankers, Pothole Filling Machines and close to 600 employees for managing this activity covering more than 600 kms of roads per day in Pune (roughly 60% of the city). The clean city covers Pune and parts of the Mumbai city..</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-sm-12">
+      <img src="/static/Images/volunteer_drive_2.jpg" alt="Image" class="img-fluid1">
+    </div>
+    <div class="col-md-6 col-lg-6 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Equipments used to drive this Initiative</h1>
+          <p class="card-text">The APCCI is deploying state of the art equipment to drive this initiative. These machines are not the conventional ones used in India to address the waste issue. These are state-of-the-art machines specifically designed to do the job effortlessly and within a short span of time.</p>
+          <h1 class="card-title">Long-term Vision</h1>
+          <p class="card-text">Pune is the first city to adopt the Adar Poonawalla Clean City Initiative. While this is a first step towards achieving the vision of making cities livable, the initiative's long-term goal is to ensure that more and more cities adopt it to make Urban India cleaner, greener, and healthier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-sm-12 order-last order-md-first">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">An initiative to make cities more livable</h1>
+          <p class="card-text">Adar Poonawalla Clean City Initiative is an environmentally sustainable initiative, undertaken by Serum Institute of India and Mr. Adar Poonawalla as a contribution towards social responsibility.</p>
+          <br>
+          <p class="card-text">His vision for the clean city began in 2015 when he found garbage piling up and being dumped across the city. He realized that if India's image had to be improved, a drastic change would be required with good management, local government support, and substantial funding. He has pledged to fund in his capacity Rs. 100 cr for this initiative.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-6 col-sm-12 order-first order-md-last">
+      <img src="/static/Images/clean_city_1.jpg" alt="Image" class="img-fluid2">
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+  <div class="row">
+    <div class="col-md-6 col-lg-5 col-sm-12">
+      <img src="/static/Images/narendra_modi_letter.jpg" alt="Image" class="img-fluid" style="margin: 30px 0px;">
+    </div>
+    <div class="col-md-6 col-lg-7 col-sm-12" style="font-size: 1.2em; line-height: 1.6; margin-top: 4%;">
+      <h1 class="card-title">Role of APCCI</h1>
+      <p>The Adar Poonawalla Clean City Initiative (APCCI) is a project that focuses on the collection of street waste in Pune and Mumbai. Some of the initiatives undertaken in this direction include:</p>
+      <ul style="list-style-type: disc; margin-left: 20px;">
+        <li>Litter picking from foothpaths.</li>
+        <li>Clearing of chronic waste dumping spots across the city.</li>
+        <li>Installing litter bins at strategic/high-traffic locations across the city.</li>
+        <li>Support vehicles and manpower for the clearance of litter from litter bins.</li>
+        <li>Providing drinking water to over 6000 families in fringe villages of Pune city.</li>
+        <li>Information and outreach programs to educate citizens regarding the importance of waste segregation and disposal using waste/litter bins.</li>
+        <li>Activation programs in association with local civic bodies in schools, residential societies, marketplaces, amongst others.</li>
+        <li>Training and sensitization programs for waste pickers/recyclers on improved waste management techniques.</li>
+      </ul>
+      <br>
+      <p>The APCCI is supported by Pune Municipal Corporation, and the cleanliness activities are coordinated with local corporators, NGOs, schools, colleges, and residential associations.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+
+{% endblock %}

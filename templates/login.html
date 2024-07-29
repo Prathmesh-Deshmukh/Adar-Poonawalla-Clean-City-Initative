@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{%block title%}Login Page{%endblock title%}
+{% load static%}
+
+
+{% block start %}
+
+<head>
+    <style>
+
+        .login-title {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 6%; 
+          }
+        .login-page {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:195px;
+            margin-bottom:70px
+        }
+        
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+            max-width: 500px;
+            min-width: 300px;
+            margin: 0 10px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        
+        .login-page input[type="text"],
+        .login-page input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: none;
+            background: #f2f2f2;
+        }
+        
+        .login-page button {
+            font-family: sans-serif;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .login-page button:hover {
+            background-color: #45a049;
+        }
+        
+        .login-page .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        
+        .login-page .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .login-page .message a:hover {
+            text-decoration: underline;
+        }
+        
+        .forgot-password {
+            margin-top: 10px;
+        }
+        
+        .forgot-password a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+          .login-page {
+            height: auto;
+          }
+          
+          .form {
+            max-width: 100%;
+            min-width: 280px;
+            margin: 0 20px;
+            padding: 30px;
+          }
+        }
+
+
+        .login_btn{
+            width: 80px;  
+            height: 30px; 
+            background-color :#58C104 ;
+            border-radius:15px;
+           }
+          
+           .login_btn:hover{
+            color:white;
+           }
+    
+
+
+    </style>
+<head>  
+
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <h2 style="color:#006600;font-family:'Arial'; font-weight:bold; font-size:32px">Login Form</h2>
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="username" style="font-family:'Arial';font-size:14px">Username:</label>
+                <input type="text" name="username" id="username" required>
+
+                <label for="password" style="font-family:'Arial';font-size:14px">Password:</label>
+                <input type="password" name="password" id="password" required>
+
+                <button type="submit" style="font-size:18px;font-weight:bold;">Login</button>
+            </form>
+            <p>Don't have an account? <a href="{% url 'main_register' %}" style="text-decoration:none;">Register here</a></p>
+            <p class="forgot-password"><a href="{% url 'reset_password' %}">Forgot password?</a></p>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+{% endblock %} 

@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% block title %}Team Page{% endblock title %}
+{% load static %}
+
+{% block start %}
+<style>
+  /* You can add global styles to this file, and also import other style files */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+
+  .img2 {
+    background-image: url("/static/Images/footer_bg1.jpg");
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3%;
+    text-align: center;
+    margin-top: 160px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack the text vertically */
+    position: relative; /* Enable positioning of button */
+  }
+
+  .img2 h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .img2 h4 {
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .card {
+    margin: 20px;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .img2 {
+      height: auto;
+      margin-top: 120px;
+    }
+
+    .img2 h3,
+    .img2 h4 {
+      margin: 10px 0;
+    }
+
+    .flex {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .card {
+      max-width: 100%;
+    }
+  }
+
+  .login_btn {
+    width: 80px;
+    height: 30px;
+    background-color: #58c104;
+    border-radius: 15px;
+  }
+
+  .login_btn:hover {
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="img2">
+    <h3>MEET THE TEAM</h3>
+    <h4>Join Hands to make clean and green city</h4>
+  </div>
+
+  <div class="flex">
+    <div class="card">
+      <img src="static/Images/adar_poonawalla_pp 1.jpg" alt="Adar Poonawalla" style="width:100%">
+      <h1 style="font-size: x-large;">Adar Poonawalla</h1>
+      <p class="title">CEO - Serum Institute of India Pvt. Ltd.</p>
+      <div class="social-links">
+        <!-- Facebook -->
+        <a style="color: black; margin-right: 15px;" href="https://www.facebook.com/adarpoonawalla/" role="button">
+          <i class="fab fa-facebook-f fa-lg"></i>
+        </a>
+
+        <!-- Twitter -->
+        <a style="color: black; margin-right: 15px; margin-bottom: 50px" href="https://twitter.com/adarpoonawalla/" role="button">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a style="color: black; margin-right: 15px;" href="https://www.linkedin.com/company/adar-poonawalla-finvest-pvt-ltd/about/" role="button">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a style="color: black; margin-right: 15px;" href="https://instagram.com/adarpoonawalla?igshid=YmMyMTA2M2Y=" role="button">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="static/Images/krishnan_lomandur_pp.jpeg" alt="Krishnan Komandur" style="width:100%">
+      <h1 style="font-size: x-large;">Krishnan Komandur</h1>
+      <p class="title">CEO - Adar Poonawalla Clean City Initiative</p>
+      <div class="social-links">
+        <!-- Facebook -->
+        <a style="color: black; margin-right: 15px;" href="https://www.facebook.com/AdarPoonawallaCleanCity" role="button">
+          <i class="fab fa-facebook-f fa-lg"></i>
+        </a>
+
+        <!-- Twitter -->
+        <a style="color: black; margin-right: 15px; margin-bottom: 50px" href="https://twitter.com/CleanCityPune" role="button">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a style="color: black; margin-right: 15px;" href="https://www.linkedin.com/in/krishnan-komandur-19328426/?originalSubdomain=in" role="button">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a style="color: black; margin-right: 15px;" href="https://instagram.com/krishnankomandur?igshid=YmMyMTA2M2Y=" role="button">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="static/Images/malhar_karwande_pp.jpg" alt="Malhar Karwande" style="width:100%">
+      <h1 style="font-size: x-large;">Malhar Karwande</h1>
+      <p class="title">COO - Adar Poonawalla Clean City Initiative</p>
+      <div class="social-links">
+        <!-- Facebook -->
+        <a style="color: black; margin-right: 15px;" href="facebook.com/AdarPoonawallaCleanCity" role="button">
+          <i class="fab fa-facebook-f fa-lg"></i>
+        </a>
+
+        <!-- Twitter -->
+        <a style="color: black; margin-right: 15px; margin-bottom: 50px" href="https://twitter.com/CleanCityPune" role="button">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+
+        <!-- YouTube -->
+        <a style="color: black; margin-right: 15px;" href="https://www.youtube.com/channel/UC4_9akRrz-JbXGJs8UHqiQA" role="button">
+          <i class="fab fa-youtube fa-lg"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a style="color: black; margin-right: 15px;" href="https://instagram.com/adarpoonawallacleancity?igshid=YmMyMTA2M2Y=" role="button">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
+<br>
+<br>
+<br>
+
+{% endblock %}

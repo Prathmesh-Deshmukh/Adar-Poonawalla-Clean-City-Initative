@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block title %}Blog Page{% endblock title %}
+{% load static %}
+
+{% block start %}
+<head>
+  <style>
+    /* Styles for the green box */
+    @media (max-width: 768px) {
+      .img2 {
+        height: auto;
+      }
+
+      .img2 h3,
+      .img2 h4 {
+        margin: 10px 0;
+      }
+    }
+
+    .img2 {
+      background-image: url("/static/Images/footer_bg1.jpg");
+      height: 150px;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      font-size: 250%;
+      margin-bottom: 3%;
+      text-align: center;
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      flex-direction: column; /* Stack the text vertically */
+      position: relative; /* Enable positioning of button */
+    }
+
+    /* Styles for the blog container and cards */
+    .blog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px auto;
+      max-width: 1500px;
+      min-height: 362px;
+    }
+
+    .blog-card {
+      border: 1px solid #d6d6d6;
+      border-radius: 10px;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+      width: 30%;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    .blog-header {
+      background-color: #58c104;
+      color: #fff;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .blog-header h2 {
+      margin-left: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .blog-date {
+      font-size: 14px;
+      margin-left: 20px;
+    }
+
+    .blog-body {
+      padding: 10px;
+    }
+
+    .blog-body p {
+      margin: 25px;
+      font-size: 16px;
+      float: right;
+    }
+
+    .blog-body p:last-child {
+      margin-top: 10px;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .blog-card {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-card {
+        width: 100%;
+      }
+    }
+
+    /* Center align the blog cards horizontally */
+    .blog-card-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Center horizontally */
+    }
+
+    .blog-card {
+      margin: 20px;
+    }
+
+    .login_btn {
+      width: 80px;
+      height: 30px;
+      background-color: #58c104;
+      border-radius: 15px;
+    }
+
+    .login_btn:hover {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Content here -->
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <br>
+  <div class="img2">
+    <h3>Blog Page</h3>
+  </div>
+
+  <div class="blog-container">
+    <div class="blog-card-wrapper">
+      {% for blog in blogs %}
+      <div class="blog-card">
+        <div class="blog-header">
+          <h2>{{ blog.title }}</h2>
+          <span class="blog-date">{{ blog.date }}</span>
+        </div>
+        <div class="blog-body">
+          <p>{{ blog.body }}<br></p>
+          <p><br>Written by: {{ blog.author }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+{% endblock %}

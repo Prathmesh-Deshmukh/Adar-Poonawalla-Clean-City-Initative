@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{%block title%}Registration Page{%endblock title%}
+{% load static%}
+
+
+{% block start %}
+<head>
+  <style>
+
+/* reset */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top:165px;
+}
+
+.password-form {
+  width: 500px;
+  padding: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.password-match {
+  color: green;
+}
+
+.password-no-match {
+  color: red;
+}
+
+button[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  display: block;
+}
+
+button[type=submit]:hover {
+  background-color: #45a049;
+}
+
+input[type=password]:invalid {
+  border-bottom: 2px solid red;
+}
+
+input[type=password]:valid {
+  border-bottom: 2px solid green;
+}
+
+@media only screen and (max-width: 480px) {
+  .password-form {
+    width: 100%;
+  }
+}
+
+
+.login_btn{
+  width: 80px;  
+  height: 30px; 
+  background-color :#58C104 ;
+  border-radius:15px;
+ }
+
+ .login_btn:hover{
+  color:white;
+ }
+
+
+
+ h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #006600;
+  text-align: center;
+}
+
+
+  </style>
+</head>
+
+
+<body>
+
+
+
+  <div class="container">
+    <div class="password-form">
+      <h1>Registration Form</h1>
+      <form name="form1" id="form1" method="POST">
+
+        {% csrf_token %}
+
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        {% if error_message.username %}
+          <p style="color: red;">{{ error_message.username }}</p>
+        {% endif %}
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        {% if error_message.email %}
+          <p style="color: red;">{{ error_message.email }}</p>
+        {% endif %}
+
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <span id="password_requirements" style="color: red;"></span>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+        <span id='password_match'></span>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+
+        <button type="submit" id="submit_button" disabled>Register</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    // Store the form values in local storage
+    document.getElementById("submit_button").addEventListener("click", function() {
+      localStorage.setItem("first_name", document.getElementById("first_name").value);
+      localStorage.setItem("last_name", document.getElementById("last_name").value);
+      localStorage.setItem("username", document.getElementById("username").value);
+      localStorage.setItem("email", document.getElementById("email").value);
+    });
+  </script>
+
+
+
+
+<script>
+  var password = document.getElementById("password");
+  var confirm_password = document.getElementById("confirm_password");
+  var password_match = document.getElementById("password_match");
+  var password_requirements = document.getElementById("password_requirements");
+
+  function validatePassword() {
+    var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+    var isValid = regex.test(password.value);
+
+    if (!isValid) {
+      password_requirements.innerHTML = "Password should be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.";
+      document.getElementById("submit_button").disabled = true;
+    } else {
+      password_requirements.innerHTML = "";
+      document.getElementById("submit_button").disabled = false;
+    }
+
+    var requirements = [
+      /[A-Z]/,      // Uppercase letter
+      /[a-z]/,      // Lowercase letter
+      /[0-9]/,      // Digit
+      /[^\w\s]/     // Special character
+    ];
+
+    var requirementsMet = requirements.map(function (requirement) {
+      return requirement.test(password.value);
+    });
+
+    var requirementLabels = [
+      "Uppercase letter",
+      "Lowercase letter",
+      "Digit",
+      "Special character"
+    ];
+
+    var requirementElements = document.getElementsByClassName("requirement");
+
+    for (var i = 0; i < requirementElements.length; i++) {
+      if (requirementsMet[i]) {
+        requirementElements[i].classList.remove("requirement-unmet");
+        requirementElements[i].classList.add("requirement-met");
+        requirementElements[i].innerHTML = "✓ " + requirementLabels[i];
+      } else {
+        requirementElements[i].classList.remove("requirement-met");
+        requirementElements[i].classList.add("requirement-unmet");
+        requirementElements[i].innerHTML = "✗ " + requirementLabels[i];
+      }
+    }
+
+    if (password.value != confirm_password.value) {
+      password_match.innerHTML = "Passwords do not match!";
+      password_match.classList.remove("password-match");
+      password_match.classList.add("password-no-match");
+      document.getElementById("submit_button").disabled = true;
+    } else {
+      password_match.innerHTML = "Passwords match!";
+      password_match.classList.remove("password-no-match");
+      password_match.classList.add("password-match");
+      document.getElementById("submit_button").disabled = false;
+    }
+  }
+
+  password.oninput = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+  </script>
+
+
+
+
+
+</body>
+
+{% endblock %} 

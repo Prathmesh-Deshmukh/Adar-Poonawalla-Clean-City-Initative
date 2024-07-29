@@ -1,0 +1,397 @@
+{% extends 'base.html' %}
+{%block title%}Profile Page{%endblock title%}
+{% load static%}
+
+
+{% block start %}
+
+<head>
+  <style>
+
+    
+    
+    .profile-container {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-top: 100px;
+        padding: 20px;
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        font-size:17px;
+        margin-bottom:3%;
+       
+
+    }
+    
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .user-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    
+    .profile-details {
+        margin-bottom: 20px;
+    }
+    
+    .info-label {
+        font-weight: bold;
+    }
+    
+    .info-value {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+       
+    }
+    
+    .info-value:focus {
+        outline: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    button[name="submit_button"] {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button[name="submit_button"]:hover {
+        background-color: #45a049;
+    }
+    
+    
+    
+    
+    
+    
+    .login_btn{
+        width: 80px;  
+        height: 30px; 
+        background-color :#58C104 ;
+        border-radius:15px;
+       }
+      
+       .login_btn:hover{
+        color:white;
+       }
+      
+    
+    
+    
+       .form-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+      }
+    
+      .form-row label {
+        width: 150px;
+        text-align: left;
+        margin-right: 10px;
+      }
+    
+      .form-row input,
+      .form-row textarea,
+      .form-row select {
+        flex: 0;
+      }
+
+
+      .row{
+        margin-left:0px;   
+      }
+
+
+      
+      
+    
+    
+    </style>
+</head>
+
+
+<body>
+	<div class="profile-container" style="margin-top:160px">
+		<div class="profile-header" style="display: flex; justify-content: center; align-items: center;">
+			<h1 style="font-size:32px; color:#006600;">Registration Form </h1>
+		</div>
+		<div class="profile-details">
+      <form id="form2" class="center" action="/register_1" method="POST">
+
+        {% csrf_token %}
+
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="first_name">First Name:</label>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="text" id="first_name1"style="width:350px " name="first_name" value="{{ first_name }}" readonly .disabled required ><br><br>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="last_name">Last Name:</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="text" id="last_name1"style="width:350px " name="last_name" value="{{ last_name }}" readonly .disabled required ><br><br>
+    
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="username">Username:</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="text" id="username1" style="width:350px "name="username" value="{{ username }}" readonly .disabled required ><br><br>
+    
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="email">Email:</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="email" id="email1" style="width:350px " name="email" value="{{ email }}" readonly .disabled required ><br><br>
+    
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="dob">Date of Birth:</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="date" id="dob" name="dob" style="width:350px" required><br><br>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="gender">Gender:</label>
+          </div>
+        
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <input type="radio" id="male" name="gender"  value="male" required >
+            <label for="male">Male</label>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <input type="radio" id="female" name="gender"  value="female">
+            <label for="female">Female</label>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br><br> 
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="phone">Phone Number:</label>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="tel" id="phone" name="phone" style="width:350px" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required><br><br>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="emergency_phone">Emergency Phone Number:</label>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="tel" id="emergency_phone" style="width:350px" name="emergency_phone" pattern="[0-9]{10}" title="Please enter a 10-digit emergency phone number" required><br><br>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="address">Address:</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <textarea id="address" name="address" rows="4" cols="50" required  style="width:350px" required></textarea><br><br>
+
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="blood_group">Blood Group:</label>
+          </div>
+        
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <select id="blood_group" name="blood_group" required style="width:350px" required>
+              <option value="">--------------Select-------------</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select><br><br>
+          </div>
+        </div>
+
+
+        
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <label for="cleanup-drive">Area of Interest:</label><br>
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <input type="checkbox" id="cleanup-drive" name="area_of_interest" value="cleanup-drive">
+              <label for="cleanup-drive">Participate in Cleanup Drive</label><br>
+  
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <input type="checkbox" id="awareness-events" name="area_of_interest" value="awareness-events">
+              <label for="awareness-events">Awareness Events</label><br>
+  
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <input type="checkbox" id="garbage-monitoring" name="area_of_interest" value="garbage-monitoring" >
+              <label for="garbage-monitoring">Monitoring at Garbage Vulnerable Spots</label>
+            </div>
+          </div>
+          </div>
+          </div>
+          <br>
+
+
+
+          <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="locations_volunteering">Locations to Volunteer:</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <input type="text" id="locations_volunteering" name="locations_volunteering" style="width:350px ">
+    
+          </div>
+        </div>
+         <br>
+         
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label for="time_volunteering">Time to invest for volunteering</label>
+          </div>
+        
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <select id="time_volunteering" name="time_volunteering"style="width:350px ">
+              <option value="">--------------Select-------------</option>
+              <option value="1-2 hours per week">1-2 hours per week</option>
+              <option value="3-5 hours per week">3-5 hours per week</option>
+              <option value="6-10 hours per week">6-10 hours per week</option>
+              <option value="more than 10 hours per week">more than 10 hours per week</option>
+            </select>
+          </div>
+        </div>
+        <br>
+      
+        
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                <label>Mode to Contact:</label>
+              </div>
+  
+              <div class="col-lg-8 col-md-8 col-sm-12">
+              <div class="row">
+  
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <input type="radio" id="whatsapp" name="notification_mode" value="whatsapp">
+                <label for="whatsapp">Whatsapp</label>
+              </div>
+              
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <input type="radio" id="email" name="notification_mode" value="email">
+                <label for="email">Email</label>
+              </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <input type="radio" id="both" name="notification_mode" value="both">
+                <label for="both">Both</label>
+              </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <input type="radio" id="none" name="notification_mode" value="none">
+                <label for="none">Don't need notifications</label>
+              </div>
+            </div>
+            </div>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                <label for="comments">Comments:</label>
+              </div>
+            
+              <div class="col-lg-8 col-md-8 col-sm-8">
+                <input type="text" id="comments" name="comments" style="width:350px ">
+ 
+        
+              </div>
+            </div>  
+      
+
+			<br>
+			<button name="submit_button" type="submit" style="width:300px; height:50px; background-color:#4CAF50; margin:20px; color:white; align-item:center; margin:auto; margin-top:30px">Submit</button>
+    </form>
+		</div>
+	</div>
+
+
+  <script>
+    // Retrieve the stored form values from local storage
+    var firstName = localStorage.getItem("first_name");
+    var lastName = localStorage.getItem("last_name");
+    var username = localStorage.getItem("username");
+    var email = localStorage.getItem("email");
+  
+    // Autofill the fields in the second form
+    document.getElementById("first_name1").value = firstName;
+    document.getElementById("last_name1").value = lastName;
+    document.getElementById("username1").value = username;
+    document.getElementById("email1").value = email;
+  </script>
+
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% load static %}
+{% extends 'base.html' %}
+
+{%block title%}Admin Login Page{%endblock title%}
+
+{% block body %}
+
+
+<head>
+    <style>
+
+        .login-title {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 6%; 
+          }
+        .login-page {
+            width: 360px;
+            padding: 8% 0 0;
+            margin: auto;
+        }
+        
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+            max-width: 500px;
+            min-width: 500px;
+            margin: 160px auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        
+        .login-page input[type="text"],
+        .login-page input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: none;
+            background: #f2f2f2;
+        }
+        
+        .login-page button {
+            font-family: sans-serif;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .login-page button:hover {
+            background-color: #45a049;
+        }
+        
+        .login-page .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        
+        .login-page .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .login-page .message a:hover {
+            text-decoration: underline;
+        }
+        
+        .forgot-password {
+            margin-top: 10px;
+        }
+        
+        .forgot-password a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+<head>   
+  
+
+<div class="login-page">
+    <div class="form">
+        <h2 class="login-title">Login</h2>
+        <form class="login-form">
+            <input type="text" placeholder="username"/>
+            <input type="password" placeholder="password"/>
+            <button>Login</button>
+            
+        </form>
+    </div>
+</div>
+
+{% endblock body%} 
